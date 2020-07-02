@@ -33,7 +33,7 @@ abstract class Repository
      * @return LengthAwarePaginator
      * @throws BindingResolutionException
      */
-    public function doQuery($query = null, int $take = 20, bool $paginate = true): LengthAwarePaginator
+    public function doQuery($query = null, int $take = 20, bool $paginate = true)
     {
         if (! $query) {
             $query = $this->newQuery();
@@ -58,7 +58,7 @@ abstract class Repository
      * @return LengthAwarePaginator
      * @throws BindingResolutionException
      */
-    public function getAll(int $take = 20, bool $paginate = false): LengthAwarePaginator
+    public function getAll(int $take = 20, bool $paginate = false)
     {
         return $this->doQuery(null, $take, $paginate);
     }
