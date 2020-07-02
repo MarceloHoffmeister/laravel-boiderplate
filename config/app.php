@@ -174,6 +174,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Units\Core\Providers\EventServiceProvider::class,
 
+        /*
+         * Domain Service Providers
+         */
+
     ],
 
     /*
