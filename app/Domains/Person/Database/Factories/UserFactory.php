@@ -14,7 +14,7 @@ class UserFactory extends ModelFactory
     protected function fields(): array
     {
         return [
-            'name' => $this->faker->name,
+            'name' => $this->faker->firstName,
             'email' => $this->faker->email,
             'password' => $this->faker->password
         ];

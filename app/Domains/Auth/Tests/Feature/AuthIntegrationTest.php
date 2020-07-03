@@ -4,29 +4,23 @@
 namespace App\Domains\Auth\Tests\Feature;
 
 
+use App\Domains\Person\Database\Models\User;
 use App\Support\Tests\TestCase;
 
 class AuthIntegrationTest extends TestCase
 {
     public function testStatusRouteAuthRegister()
     {
-        $user = [
-            'name' => 'Marcelo Hoffmeister',
-            'email' => 'marcelohoffmeister@mail.com',
-            'password' => 'valid-password'
-        ];
+        $user = factory(User::class)->make()->toArray();
 
         $response = $this->post('auth/register', $user);
+
         $response->assertStatus(200);
     }
 
     public function testResponseRouteAuthRegister()
     {
-        $user = [
-            'name' => 'Marcelo Hoffmeister',
-            'email' => 'marcelohoffmeister@mail.com',
-            'password' => 'valid-password'
-        ];
+        $user = factory(User::class)->make()->toArray();
 
         $response = $this->post('auth/register', $user);
         $response = collect($response->getOriginalContent())->toArray();
@@ -36,9 +30,12 @@ class AuthIntegrationTest extends TestCase
 
     public function testResponseRouteAuthLogin()
     {
+        $user = factory(User::class)->make()->toArray();
+        $this->post('auth/register', $user);
+
         $login = [
-            'email' => 'marcelohoffeister@mail.com',
-            'password' => 'valid-password'
+            'email' => $user['email'],
+            'password' => $user['password']
         ];
 
         $response = $this->post('auth/login', $login);
