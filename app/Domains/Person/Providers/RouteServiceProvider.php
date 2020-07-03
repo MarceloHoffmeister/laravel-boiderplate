@@ -29,7 +29,7 @@ class RouteServiceProvider extends ServiceProvider
             'namespace' => $this->namespace,
             'prefix' => 'user',
             'group' => 'api',
-//            'middleware' => 'auth:api'
+            'middleware' => 'api'
         ]))->register();
     }
 }

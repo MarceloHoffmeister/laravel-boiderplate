@@ -10,7 +10,7 @@ class Routes extends RouteFile
 {
     protected function routes()
     {
-        $this->router->post('/register', 'AuthController@register');
-        $this->router->post('/login', 'AuthController@login');
+        $this->router->post('/register', 'AuthController@register')->name('auth.register');
+        $this->router->post('/login', 'AuthController@login')->name('auth.login');
     }
 }

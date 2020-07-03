@@ -10,7 +10,7 @@ class Routes extends RouteFile
 {
     public function routes()
     {
-        $this->router->get('/', 'UserController@index');
-        $this->router->post('/', 'UserController@store');
+        $this->router->get('/', 'UserController@index')->name('user');
+        $this->router->post('/', 'UserController@store')->name('user');
     }
 }
