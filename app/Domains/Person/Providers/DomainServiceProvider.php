@@ -12,6 +12,7 @@ class DomainServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerRoutes();
+        $this->registerMigrations();
         $this->registerFactories();
     }
 
@@ -23,5 +24,10 @@ class DomainServiceProvider extends ServiceProvider
     private function registerFactories(): void
     {
         (new UserFactory())->define();
+    }
+
+    protected function registerMigrations(): void
+    {
+        $this->loadMigrationsFrom('app/Domains/Person/Database/Migrations');
     }
 }
