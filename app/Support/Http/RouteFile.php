@@ -2,6 +2,8 @@
 
 namespace App\Support\Http;
 
+use Illuminate\Support\Facades\Route;
+
 abstract class RouteFile
 {
     protected $options;
@@ -25,7 +27,7 @@ abstract class RouteFile
     public function register()
     {
 
-        \Route::pattern('id', '[0-9]+');
+        Route::pattern('id', '[0-9]+');
 
         $this->router->group($this->options, function () {
             $this->routes();
