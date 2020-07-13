@@ -17,6 +17,9 @@
             <directory suffix=".php">./app</directory>
         </whitelist>
     </filter>
+    <logging>
+        <log type="coverage-html" target="public/phpunit" lowUpperBound="35" highLowerBound="70"/>
+    </logging>
     <php>
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
