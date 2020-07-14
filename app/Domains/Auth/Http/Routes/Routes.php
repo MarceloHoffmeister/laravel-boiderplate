@@ -12,5 +12,6 @@ class Routes extends RouteFile
     {
         $this->router->post('/register', 'AuthController@register')->name('auth.register');
         $this->router->post('/login', 'AuthController@login')->name('auth.login');
+        $this->router->post('/logout', 'AuthController@logout')->name('auth.logout')->middleware('auth:api');
     }
 }

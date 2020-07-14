@@ -8,20 +8,22 @@
         <testsuite name="Auth">
             <directory suffix="Test.php">app/Domains/Auth/Tests/Feature</directory>
         </testsuite>
-        <testsuite name="Person">
-            <directory suffix="Test.php">app/Domains/Person/Tests/Feature</directory>
-        </testsuite>
+<!--        <testsuite name="Person">-->
+<!--            <directory suffix="Test.php">app/Domains/Person/Tests/Feature</directory>-->
+<!--        </testsuite>-->
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
         </whitelist>
     </filter>
+    <logging>
+        <log type="coverage-html" target="public/phpunit" lowUpperBound="35" highLowerBound="70"/>
+    </logging>
     <php>
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
-        <server name="DB_CONNECTION" value="testing"/>
         <server name="MAIL_MAILER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="SESSION_DRIVER" value="array"/>

@@ -21,7 +21,7 @@ trait DatabaseMigrationsPerson
         $this->app[Kernel::class]->setArtisan(null);
 
         $this->beforeApplicationDestroyed(function () {
-            $this->artisan('migrate:rollback --path=app/Domains/Person/Database/Migrations');
+            $this->artisan('migrate:rollback');
 
             RefreshDatabaseState::$migrated = false;
         });
