@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+
+  php:
+    container_name: boiderplate-php
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+      - ./.docker/php:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - boiderplate-network
+
+  web:
+    container_name: boiderplate-nginx
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8000:80"
+      - "8001:8080"
+    volumes:
+      - ./:/var/www/html
+      - ./.docker/nginx/conf.d:/etc/nginx/conf.d/
+      - ./.docker/nginx/logs:/var/log/nginx
+    networks:
+      boiderplate-network:
+        aliases:
+          - local.boiderplate.com.br
+
+  db:
+    container_name: boiderplate-db
+    image: postgres:12
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DATABASE: boiderplate
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+      - ./.docker/database/init:/docker-entrypoint-initdb.d
+    ports:
+      - "25432:5432"
+    networks:
+      - boiderplate-network
+
+networks:
+  boiderplate-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
