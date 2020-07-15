@@ -179,6 +179,11 @@ return [
          */
         App\Domains\Auth\Providers\DomainServiceProvider::class,
         App\Domains\Person\Providers\DomainServiceProvider::class,
+
+        /*
+         * Unit Service Providers
+         */
+        App\Units\Docs\Swagger\Providers\UnitServiceProvider::class,
     ],
 
     /*
