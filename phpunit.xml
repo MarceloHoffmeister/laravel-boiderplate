@@ -8,9 +8,9 @@
         <testsuite name="Auth">
             <directory suffix="Test.php">app/Domains/Auth/Tests/Feature</directory>
         </testsuite>
-<!--        <testsuite name="Person">-->
-<!--            <directory suffix="Test.php">app/Domains/Person/Tests/Feature</directory>-->
-<!--        </testsuite>-->
+        <testsuite name="Person">
+            <directory suffix="Test.php">app/Domains/Person/Tests/Feature</directory>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
